@@ -1,0 +1,15 @@
+<%- include ./layouts/header.ejs %>
+  <body>
+    <%- include navigation.ejs %>
+    <div class="container">
+      <div class="row">
+        <h1><%= title %></h1>
+        <% if (!decodedUser) { %>
+          <p>Welcome to <%= title %></p>
+        <% } else { %>
+          <p>Welcome <%= decodedUser.id_token.name %></p>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

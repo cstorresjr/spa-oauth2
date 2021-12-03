@@ -1,0 +1,35 @@
+<%- include ./layouts/header.ejs %>
+  <body>
+    <%- include navigation.ejs %>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <h1>Welcome</h1>
+          <br />
+          <p>Here are your tokens:</p>
+          <div class="card p-3">
+            <% Object.keys(user).forEach(function(item) { %>
+              <% if (item !== 'scope') { %>
+                <b><%- item %></b><code><%- user[item] %></code>
+                <br />
+              <% } %>
+            <% }); %>
+          </div>
+        </div>
+        <div class="col-6">
+          <h1>Welcome <em><%= decodedUser.id_token.name %></em></h1>
+          <br />
+          <p>Here are your decoded tokens:</p>
+          <div class="card p-3">
+            <% Object.keys(decodedUser).forEach(function(item) { %>
+              <b><%- item %></b><% Object.keys(decodedUser[item]).forEach(function(nItem) { %>
+                <code><%- nItem %>: <%- decodedUser[item][nItem] %></code>
+                <% }) %>
+              <br />
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
